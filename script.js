@@ -7,13 +7,34 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+function render() {
+  let library = document.querySelector("#library");
+  library.innerHTML = "";
+  for (let i = 0; i < myLibrary.length; i++) {
+    let book = myLibrary[i];
+    let bookEl = document.createElement("div");
+    bookEl.innerHTML = `
+    <div class="card-header">
+      <h3 class="title">${book.title}</h3>
+      <h5 class="author">by ${book.author}</h5>
+    </div>
+    <div class="card-body">
+      <p>${book.pages} pages</p>
+      <p class="read-status">${book.read ? "Read" : "Not Read Yet"}</p>
+    </div>`;
+    bookEl.setAttribute("class", "book-card");
+    library.appendChild(bookEl);
+  }
+}
+
 function addBookToLibrary() {
   let title = document.querySelector("#title").value;
   let author = document.querySelector("#author").value;
   let pages = document.querySelector("#pages").value;
   let read = document.querySelector("#read").checked;
   let newBook = new Book(title, author, pages, read);
-  console.log(newBook);
+  myLibrary.push(newBook);
+  render();
 }
 
 const newBookBtn = document.querySelector("#new-book-btn");
