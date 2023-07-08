@@ -62,8 +62,11 @@ newBookBtn.addEventListener("click", () => {
 });
 
 const form = document.querySelector("#new-book-form");
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
 
 form.addEventListener("submit", event => {
   event.preventDefault();
-  addBookToLibrary();
+  if (form.checkValidity()) addBookToLibrary();
 });

@@ -121,3 +121,7 @@ button:hover {
 .read-status {
   background-color: rgb(121, 121, 202);
 }
+
+input:not(input[type="submit"]):valid {
+  border: 1px solid green;
+}
